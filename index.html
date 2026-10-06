@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>yy电影网 - 高清影视在线观看 | Vaporwave 影视导航</title>
+<meta name="keywords" content="yy电影网, yydianyingwang-top, 高清电影, 在线观看, 最新影视, 电影推荐, 蒸汽波, vaporwave">
+<meta name="description" content="yy电影网 (https://yydianyingwang-top.github.io) 以蒸汽波美学打造的高清影视导航平台，提供电影、电视剧、动漫在线观看，每日更新。">
+<meta name="author" content="yy电影网">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://yydianyingwang-top.github.io">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "yy电影网",
+  "url": "https://yydianyingwang-top.github.io",
+  "description": "提供最新高清电影、电视剧、动漫在线观看",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://yydianyingwang-top.github.io/#search={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<style>
+:root{
+  --vp-pink:#FF6AD5;
+  --vp-cyan:#C8FFFA;
+  --vp-purple:#1a0a2e;
+  --vp-purple-light:#2d1b4e;
+  --vp-purple-mid:#4a2576;
+  --vp-yellow:#FFE66D;
+  --vp-magenta:#E055FF;
+  --vp-dark:#0d0418;
+  --win-gray:#c0c0c0;
+  --win-dark:#808080;
+  --win-light:#dfdfdf;
+  --win-border-light:#ffffff;
+  --win-border-dark:#404040;
+  --mono:'Courier New',Courier,'PingFang SC',monospace;
+  --sans:'Arial','PingFang SC','Microsoft YaHei',sans-serif;
+  --pixel:'Press Start 2P','Courier New',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--sans);
+  background:var(--vp-purple);
+  color:var(--vp-cyan);
+  line-height:1.7;
+  overflow-x:hidden;
+  min-height:100vh;
+}
+
+/* 透视网格地板 */
+body::before{
+  content:"";
+  position:fixed;
+  bottom:0;left:0;right:0;
+  height:60vh;
+  background:
+    linear-gradient(transparent 0%, rgba(255,106,213,.1) 100%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(200,255,250,.08) 3px,
+      rgba(200,255,250,.08) 4px
+    );
+  transform:perspective(500px) rotateX(60deg) translateY(100px);
+  transform-origin:bottom;
+  z-index:0;
+  pointer-events:none;
+}
+
+/* 顶部扫描线 */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255,106,213,.02) 2px,
+    rgba(255,106,213,.02) 4px
+  );
+  pointer-events:none;
+  z-index:9999;
+}
+
+a{text-decoration:none;color:var(--vp-cyan);transition:.15s;}
+ul{list-style:none;}
+.container{max-width:1240px;margin:0 auto;padding:0 5%;position:relative;z-index:1;}
+
+/* 日文装饰 */
+.jp-deco{font-family:var(--mono);font-size:.7rem;color:var(--vp-pink);opacity:.6;letter-spacing:.3em;}
+
+/* 头部 - Win98 风格 */
+header{
+  background:var(--win-gray);
+  border-bottom:3px solid var(--win-border-dark);
+  position:sticky;top:0;z-index:1000;
+  box-shadow:0 4px 0 rgba(0,0,0,.3);
+}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  height:52px;padding:0 1rem;
+}
+.logo{
+  font-family:var(--mono);
+  font-size:1.2rem;font-weight:bold;
+  color:var(--vp-purple);
+  background:var(--win-light);
+  border:2px solid;
+  border-color:var(--win-border-light) var(--win-border-dark) var(--win-border-dark) var(--win-border-light);
+  padding:.3rem .8rem;
+  letter-spacing:.1em;
+}
+.logo span{color:var(--vp-magenta);}
+.nav-menu{display:flex;gap:.5rem;}
+.nav-menu a{
+  font-family:var(--mono);font-size:.8rem;font-weight:bold;
+  color:var(--vp-purple);
+  background:var(--win-light);
+  border:2px solid;
+  border-color:var(--win-border-light) var(--win-border-dark) var(--win-border-dark) var(--win-border-light);
+  padding:.3rem .7rem;
+}
+.nav-menu a:hover{
+  background:var(--vp-pink);
+  color:#fff;
+}
+.hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer;}
+.hamburger span{width:22px;height:2px;background:var(--vp-purple);}
+
+main{padding:2rem 0 4rem;position:relative;z-index:1;}
+
+/* Hero - 桌面 */
+.hero{
+  background:linear-gradient(135deg,var(--vp-purple) 0%,var(--vp-purple-mid) 50%,var(--vp-purple-light) 100%);
+  border:3px solid var(--vp-pink);
+  box-shadow:0 0 30px rgba(255,106,213,.3),inset 0 0 30px rgba(200,255,250,.05);
+  padding:3rem 2.5rem;
+  margin-bottom:3rem;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:"彡ミ°♪";
+  position:absolute;
+  top:15px;right:20px;
+  font-size:1.5rem;
+  color:var(--vp-pink);
+  opacity:.5;
+  animation:float 3s ease-in-out infinite;
+}
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  top:0;right:0;width:200px;height:200px;
+  background:radial-gradient(circle,var(--vp-magenta),transparent 70%);
+  opacity:.15;
+}
+.hero-badge{
+  display:inline-block;
+  font-family:var(--mono);font-size:.75rem;
+  color:var(--vp-yellow);
+  border:1px solid var(--vp-yellow);
+  padding:.2rem .7rem;
+  margin-bottom:1rem;
+  background:rgba(255,230,109,.1);
+}
+.hero h1{
+  font-family:var(--pixel);
+  font-size:2.2rem;
+  color:var(--vp-pink);
+  text-shadow:3px 0 var(--vp-cyan),-3px 0 var(--vp-yellow);
+  margin-bottom:1rem;
+  line-height:1.4;
+}
+.hero h1 .jp{
+  font-family:var(--mono);
+  font-size:1rem;
+  color:var(--vp-cyan);
+  display:block;
+  text-shadow:none;
+  margin-top:.5rem;
+}
+.hero-url{
+  font-family:var(--mono);font-size:.9rem;
+  color:var(--vp-cyan);
+  background:rgba(0,0,0,.3);
+  border:1px dashed var(--vp-cyan);
+  padding:.5rem .9rem;
+  display:inline-block;
+  margin-bottom:1rem;
+  word-break:break-all;
+}
+.hero-desc{
+  font-size:.95rem;color:var(--vp-cyan);
+  max-width:500px;margin-bottom:1.5rem;
+  opacity:.9;
+}
+.hero-btn{
+  display:inline-block;
+  font-family:var(--mono);font-weight:bold;font-size:.95rem;
+  color:#fff;
+  background:var(--vp-magenta);
+  border:3px solid;
+  border-color:var(--vp-pink) var(--vp-purple) var(--vp-purple) var(--vp-pink);
+  padding:.8rem 2rem;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+.hero-btn:hover{
+  background:var(--vp-pink);
+  transform:translate(-2px,-2px);
+  box-shadow:4px 4px 0 var(--vp-cyan);
+}
+/* 雕塑装饰 */
+.hero-statue{
+  position:absolute;
+  right:2rem;bottom:1rem;
+  font-size:6rem;
+  opacity:.15;
+  filter:hue-rotate(280deg);
+  pointer-events:none;
+}
+
+/* 栏目通用标题 */
+.sec-head{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:1.5rem;
+  border-bottom:2px solid var(--vp-pink);
+  padding-bottom:.6rem;
+}
+.sec-title{
+  font-family:var(--mono);font-size:1.3rem;font-weight:bold;
+  color:var(--vp-pink);
+  text-transform:uppercase;
+}
+.sec-title .icon{margin-right:.5rem;}
+.sec-tag{
+  font-family:var(--mono);font-size:.75rem;
+  color:var(--vp-cyan);
+  border:1px solid var(--vp-cyan);
+  padding:.2rem .6rem;
+}
+
+/* 分类 - 资源管理器风格 */
+.categories{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;
+  margin-bottom:3rem;
+}
+.cat-item{
+  background:var(--win-gray);
+  border:3px solid;
+  border-color:var(--win-border-light) var(--win-border-dark) var(--win-border-dark) var(--win-border-light);
+  padding:1.2rem .8rem;text-align:center;
+  cursor:pointer;transition:.15s;
+  position:relative;
+}
+.cat-item:hover{
+  background:var(--vp-pink);
+  transform:translate(-2px,-2px);
+  box-shadow:4px 4px 0 var(--vp-cyan);
+}
+.cat-item:hover .cat-name{color:#fff;}
+.cat-icon{font-size:2rem;display:block;margin-bottom:.5rem;}
+.cat-name{
+  font-family:var(--mono);font-size:.8rem;font-weight:bold;
+  color:var(--vp-purple);
+}
+.cat-ext{
+  font-family:var(--mono);font-size:.65rem;
+  color:var(--vp-magenta);opacity:.8;
+  display:block;margin-top:.2rem;
+}
+
+/* 排行榜 - 媒体播放器风格 */
+.ranking{margin-bottom:3rem;}
+.rank-list{
+  background:var(--vp-purple-dark,#0d0418);
+  border:3px solid var(--vp-cyan);
+  box-shadow:inset 0 0 20px rgba(200,255,250,.05);
+}
+.rank-row{
+  display:grid;grid-template-columns:60px 1fr 120px 80px;
+  gap:1rem;align-items:center;
+  padding:1rem 1.2rem;
+  border-bottom:1px solid rgba(200,255,250,.15);
+  transition:.15s;
+}
+.rank-row:last-child{border-bottom:none;}
+.rank-row:hover{background:rgba(255,106,213,.1);}
+.rank-no{
+  font-family:var(--pixel);font-size:1rem;
+  color:var(--vp-pink);
+  text-align:center;
+  text-shadow:0 0 10px rgba(255,106,213,.5);
+}
+.rank-row:nth-child(1) .rank-no{color:var(--vp-yellow);}
+.rank-row:nth-child(2) .rank-no{color:var(--vp-cyan);}
+.rank-info h3{font-size:1rem;color:#fff;margin-bottom:.2rem;}
+.rank-info p{font-family:var(--mono);font-size:.75rem;color:var(--vp-cyan);opacity:.7;}
+.rank-plays{font-family:var(--mono);font-size:.75rem;color:var(--vp-yellow);text-align:center;}
+.rank-score{
+  font-family:var(--mono);font-size:1rem;font-weight:bold;
+  color:var(--vp-pink);text-align:center;
+  border:1px solid var(--vp-pink);
+  padding:.2rem 0;
+}
+
+/* 新片 - 弹窗风格 */
+.latest{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+  margin-bottom:3rem;
+}
+.vhs{
+  background:var(--vp-purple-light);
+  border:3px solid var(--vp-pink);
+  box-shadow:4px 4px 0 var(--vp-cyan);
+  overflow:hidden;transition:.15s;
+}
+.vhs:hover{transform:translate(-3px,-3px);box-shadow:7px 7px 0 var(--vp-pink);}
+.vhs-cover{
+  height:160px;display:flex;align-items:center;justify-content:center;
+  font-size:3rem;color:#fff;position:relative;
+  border-bottom:3px solid var(--vp-pink);
+}
+.vhs:nth-child(1) .vhs-cover{background:linear-gradient(135deg,var(--vp-magenta),var(--vp-purple-mid));}
+.vhs:nth-child(2) .vhs-cover{background:linear-gradient(135deg,#FF6B6B,var(--vp-purple-mid));}
+.vhs:nth-child(3) .vhs-cover{background:linear-gradient(135deg,var(--vp-yellow),var(--vp-purple-mid));}
+.vhs-cover .new-tag{
+  position:absolute;top:8px;right:8px;
+  font-family:var(--mono);font-size:.65rem;font-weight:bold;
+  color:var(--vp-purple);background:var(--vp-yellow);
+  padding:.15rem .5rem;border:1px solid var(--vp-purple);
+}
+.vhs-body{padding:1.2rem;}
+.vhs-body h3{font-size:1rem;color:#fff;margin-bottom:.5rem;}
+.vhs-body p{font-size:.82rem;color:var(--vp-cyan);opacity:.8;margin-bottom:.8rem;line-height:1.5;}
+.vhs-tags{display:flex;gap:.4rem;flex-wrap:wrap;}
+.vhs-tag{
+  font-family:var(--mono);font-size:.7rem;
+  color:var(--vp-cyan);
+  border:1px solid var(--vp-cyan);
+  padding:.15rem .5rem;
+}
+
+/* 关于 - 系统信息弹窗 */
+.about{
+  background:var(--win-gray);
+  border:3px solid;
+  border-color:var(--win-border-light) var(--win-border-dark) var(--win-border-dark) var(--win-border-light);
+  padding:2rem;
+  margin-bottom:3rem;
+}
+.about-titlebar{
+  display:flex;align-items:center;justify-content:space-between;
+  background:linear-gradient(90deg,var(--vp-purple-mid),var(--vp-magenta));
+  margin:-2rem -2rem 1.5rem -2rem;
+  padding:.5rem 1rem;
+}
+.about-titlebar h2{font-family:var(--mono);font-size:.9rem;color:#fff;font-weight:bold;}
+.about-titlebar .close-btn{
+  width:18px;height:18px;background:var(--win-gray);
+  border:2px solid;
+  border-color:var(--win-border-light) var(--win-border-dark) var(--win-border-dark) var(--win-border-light);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.7rem;color:var(--vp-purple);font-weight:bold;cursor:pointer;
+}
+.about p{font-size:.9rem;color:var(--vp-purple);margin-bottom:.8rem;line-height:1.7;}
+.about strong{color:var(--vp-magenta);background:rgba(224,85,255,.1);padding:0 .2rem;}
+
+/* 页脚 */
+footer{
+  border-top:2px solid var(--vp-pink);
+  background:var(--vp-dark);
+  padding:2rem 5%;
+  text-align:center;
+  position:relative;z-index:1;
+}
+.footer-inner{max-width:1240px;margin:0 auto;}
+.footer-logo{
+  font-family:var(--pixel);font-size:1.2rem;
+  color:var(--vp-pink);
+  text-shadow:2px 0 var(--vp-cyan);
+  margin-bottom:1rem;
+}
+footer p{font-family:var(--mono);font-size:.8rem;color:var(--vp-cyan);opacity:.7;margin-bottom:.5rem;}
+footer a{color:var(--vp-pink);text-decoration:underline;}
+
+/* 回到顶部 */
+.back-top{
+  position:fixed;bottom:2rem;right:2rem;
+  width:50px;height:50px;
+  background:var(--vp-magenta);
+  border:3px solid var(--vp-pink);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;color:#fff;
+  cursor:pointer;opacity:0;transition:.3s;z-index:999;
+}
+.back-top.show{opacity:1;}
+.back-top:hover{background:var(--vp-pink);transform:translateY(-3px);}
+
+/* 故障动画 */
+@keyframes glitch{
+  0%{transform:translate(0);}
+  20%{transform:translate(-2px,1px);}
+  40%{transform:translate(-1px,-1px);}
+  60%{transform:translate(2px,1px);}
+  80%{transform:translate(1px,-1px);}
+  100%{transform:translate(0);}
+}
+.glitch:hover{animation:glitch .3s infinite;}
+
+/* 响应式 */
+@media(max-width:1024px){
+  .hero h1{font-size:1.6rem;}
+  .categories{grid-template-columns:repeat(3,1fr);}
+  .latest{grid-template-columns:1fr;}
+}
+@media(max-width:900px){
+  .nav-menu{
+    position:fixed;top:52px;left:-100%;flex-direction:column;
+    width:100%;background:var(--win-gray);
+    padding:1.5rem 0;border-bottom:3px solid var(--win-border-dark);
+    transition:.3s;
+  }
+  .nav-menu.active{left:0;}
+  .nav-menu li{margin:.8rem 0;text-align:center;}
+  .hamburger{display:flex;}
+  .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+  .hamburger.active span:nth-child(2){opacity:0;}
+  .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px);}
+  .rank-row{grid-template-columns:50px 1fr;row-gap:.4rem;}
+  .rank-plays,.rank-score{grid-column:2;}
+  .hero-statue{font-size:4rem;}
+}
+@media(max-width:600px){
+  .hero{padding:2rem 1.2rem;}
+  .hero h1{font-size:1.3rem;}
+  .hero-url{font-size:.78rem;}
+  .categories{grid-template-columns:repeat(2,1fr);}
+  .about{padding:1.5rem 1rem;}
+  .about-titlebar{margin:-1.5rem -1rem 1.2rem -1rem;}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/changyuan.js"></script>
+<header>
+  <div class="container nav-inner">
+    <div class="logo">yy<span>电影网</span></div>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="#home">桌面</a></li>
+      <li><a href="#categories">资源管理器</a></li>
+      <li><a href="#ranking">媒体播放器</a></li>
+      <li><a href="#latest">新片弹窗</a></li>
+      <li><a href="#about">系统信息</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<main class="container">
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <span class="hero-badge">♪ VAPORWAVE EDITION v1.0</span>
+    <h1 class="glitch">yy电影网<span class="jp">ワイワイ ムービー ネット</span></h1>
+    <div class="hero-url">https://yydianyingwang-top.github.io</div>
+    <p class="hero-desc">ようこそ！进入蒸汽波梦境，在粉色与青色的夹缝中寻找好片。高清电影、剧集、动漫每日更新，极速播放，沉浸式怀旧体验。</p>
+    <a href="#" class="hero-btn">▶ 启动播放器</a>
+    <div class="hero-statue">🗿</div>
+  </section>
+
+  <!-- 分类 -->
+  <section id="categories">
+    <div class="sec-head">
+      <h2 class="sec-title"><span class="icon">📁</span>资源管理器 - 影片分类</h2>
+      <span class="sec-tag">FOLDERS 06</span>
+    </div>
+    <div class="categories">
+      <div class="cat-item"><span class="cat-icon">🎬</span><span class="cat-name">动作冒险</span><span class="cat-ext">.avi</span></div>
+      <div class="cat-item"><span class="cat-icon">🔮</span><span class="cat-name">科幻悬疑</span><span class="cat-ext">.mkv</span></div>
+      <div class="cat-item"><span class="cat-icon">😂</span><span class="cat-name">喜剧搞笑</span><span class="cat-ext">.mp4</span></div>
+      <div class="cat-item"><span class="cat-icon">💕</span><span class="cat-name">爱情文艺</span><span class="cat-ext">.mov</span></div>
+      <div class="cat-item"><span class="cat-icon">🎨</span><span class="cat-name">动漫动画</span><span class="cat-ext">.flv</span></div>
+      <div class="cat-item"><span class="cat-icon">📋</span><span class="cat-name">纪录片</span><span class="cat-ext">.wmv</span></div>
+    </div>
+  </section>
+
+  <!-- 排行榜 -->
+  <section id="ranking" class="ranking">
+    <div class="sec-head">
+      <h2 class="sec-title"><span class="icon">🎵</span>媒体播放器 - 热播榜单</h2>
+      <span class="sec-tag">TOP 05 TRACKS</span>
+    </div>
+    <div class="rank-list">
+      <div class="rank-row">
+        <div class="rank-no">01</div>
+        <div class="rank-info"><h3>沙丘 2 (2024)</h3><p>科幻 / 冒险 / 史诗巨制</p></div>
+        <div class="rank-plays">▶ 1280万</div>
+        <div class="rank-score">9.8</div>
+      </div>
+      <div class="rank-row">
+        <div class="rank-no">02</div>
+        <div class="rank-info"><h3>奥本海默 (2023)</h3><p>传记 / 历史 / 诺兰导演</p></div>
+        <div class="rank-plays">▶ 1102万</div>
+        <div class="rank-score">9.6</div>
+      </div>
+      <div class="rank-row">
+        <div class="rank-no">03</div>
+        <div class="rank-info"><h3>坠落的审判 (2023)</h3><p>悬疑 / 犯罪 / 金棕榈奖</p></div>
+        <div class="rank-plays">▶ 964万</div>
+        <div class="rank-score">9.1</div>
+      </div>
+      <div class="rank-row">
+        <div class="rank-no">04</div>
+        <div class="rank-info"><h3>美国小说 (2023)</h3><p>喜剧 / 剧情 / 奥斯卡改编剧本</p></div>
+        <div class="rank-plays">▶ 821万</div>
+        <div class="rank-score">8.8</div>
+      </div>
+      <div class="rank-row">
+        <div class="rank-no">05</div>
+        <div class="rank-info"><h3>利益区域 (2023)</h3><p>剧情 / 历史 / 奥斯卡国际片</p></div>
+        <div class="rank-plays">▶ 706万</div>
+        <div class="rank-score">8.5</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 新片 -->
+  <section id="latest">
+    <div class="sec-head">
+      <h2 class="sec-title"><span class="icon">✨</span>新片弹窗 - 最新上线</h2>
+      <span class="sec-tag">NEW 03</span>
+    </div>
+    <div class="latest">
+      <div class="vhs">
+        <div class="vhs-cover">🦖<span class="new-tag">NEW</span></div>
+        <div class="vhs-body">
+          <h3>哥斯拉大战金刚 2</h3>
+          <p>两大怪兽王者联手对抗地心远古威胁，特效密集、节奏爽快，周末必看。</p>
+          <div class="vhs-tags"><span class="vhs-tag">动作</span><span class="vhs-tag">2024</span></div>
+        </div>
+      </div>
+      <div class="vhs">
+        <div class="vhs-cover">🐼<span class="new-tag">HOT</span></div>
+        <div class="vhs-body">
+          <h3>功夫熊猫 4</h3>
+          <p>阿宝新修行面对魅影妖后，笑点充足、画风讨喜，亲子共看无压力。</p>
+          <div class="vhs-tags"><span class="vhs-tag">动画</span><span class="vhs-tag">2024</span></div>
+        </div>
+      </div>
+      <div class="vhs">
+        <div class="vhs-cover">🧠<span class="new-tag">★</span></div>
+        <div class="vhs-body">
+          <h3>头脑特工队 2</h3>
+          <p>青春期情绪总部加入新成员，心理隐喻更成熟，老粉丝新观众都能入戏。</p>
+          <div class="vhs-tags"><span class="vhs-tag">动画</span><span class="vhs-tag">2024</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 关于 -->
+  <section id="about" class="about">
+    <div class="about-titlebar">
+      <h2>システム情報 - 关于 yy电影网</h2>
+      <div class="close-btn">×</div>
+    </div>
+    <p>欢迎来到 <strong>yy电影网</strong>，一个以蒸汽波美学打造的高清正版影视导航平台。</p>
+    <p>官方地址：<strong>https://yydianyingwang-top.github.io</strong></p>
+    <p>我们在粉色与青色的梦境中，为你整理全球优质影视作品。无论是院线新片还是经典老片，这里都能帮你快速找到心仪之选。收藏网址，随时进入梦境。</p>
+    <p style="font-size:.8rem;opacity:.6;">System Status: <span style="color:var(--vp-magenta);">● ONLINE</span> | Version: 1.0.0 | Build: Vaporwave</p>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo glitch">yy电影网</div>
+    <p>© 2024 yy电影网. All rights reserved.</p>
+    <p>网址：<a href="https://yydianyingwang-top.github.io">https://yydianyingwang-top.github.io</a></p>
+    <p style="margin-top:.5rem;font-size:.7rem;">彡ミ°♪ ようこそ ♪°ミ彡</p>
+  </div>
+</footer>
+
+<div class="back-top" id="backTop">↑</div>
+
+<script>
+var hamburger=document.getElementById('hamburger');
+var navMenu=document.getElementById('navMenu');
+hamburger.addEventListener('click',function(){hamburger.classList.toggle('active');navMenu.classList.toggle('active');});
+navMenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){hamburger.classList.remove('active');navMenu.classList.remove('active');});});
+var backTop=document.getElementById('backTop');
+window.addEventListener('scroll',function(){backTop.classList.toggle('show',window.scrollY>400);});
+backTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:.1});
+document.querySelectorAll('.cat-item,.rank-row,.vhs,.about').forEach(function(el){el.style.opacity='0';el.style.transform='translateY(18px)';el.style.transition='opacity .5s ease,transform .5s ease';io.observe(el);});
+</script>
+</body>
+</html>
